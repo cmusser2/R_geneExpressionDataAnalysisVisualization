@@ -1,0 +1,54 @@
+# XY Scatterplot of SLE vs. healthy control samples
+# Crystal Musser (crystal.musser2013@gmail.com)
+# M.S. in Bioinformatics from Johns Hopkins University
+#
+# This algorithm compares transcript profiles from GEO data set  
+# peripheral B lymphocytes between patients with systemic lupus 
+# erythematosus (SLE) and normal healthy controls in an XY scatterplot.  
+#
+## README:
+## 1) set working directory, if necessary    #setwd("/Users/crystalmusser/Documents/Rhome")
+## 2) run R program on .txt file
+## 3) XY scatterplots will be generated in a new window
+##
+# The GEO summary of the data set is as follows:
+# Systemic lupus erythematosus (SLE) is an autoimmune disease with an 
+# important clinical and biological heterogeneity. B lymphocytes appear 
+# central to the development of SLE which is characterized by the production 
+# of a large variety of autoantibodies and hypergammaglobulinemia. In mice, 
+# immature B cells from spontaneous lupus prone animals are able to produce 
+# autoantibodies when transferred into immunodeficient mice, strongly 
+# suggesting the existence of intrinsic B cell defects during lupus. In order 
+# to approach these defects in humans, we compared the peripheral B cell 
+# transcriptomes of quiescent lupus patients to normal B cell transcriptomes.
+#
+# RESULTS:
+# The first XY scatterplot shows all data pertinent to the 2nd SLE patient sample 
+# (found as “sle.2” in column 2, since R starts indexing at 1 instead of 0) 
+# versus the 1st normal control (“control.1” at column 18). Plotted as 
+# Normal vs. SLE, there is a clear positive directional correlation.
+#
+# The second XY scatter plot simarly plots Normal B-cells vs. SLE B-cells, 
+# but restricts the amount of data shown to the first 20 probesets. To 
+# accomplish this, I created new variables to hold subset control and 
+# sample vectors, which were then used in a simple “p” type plot() function.
+#
+sleData <- read.table("sle_b_cell.txt", sep = "\t", header = T, row.names = 1)
+View(sleData)
+print(sleData)
+dim(sleData)
+colnames(sleData)
+row.names(sleData)
+ctl <- sleData$control.1
+smp <- sleData$sle.2
+plot(ctl, smp, type = "p", 
+     main = "SLE B cell sample vs. Normal B cell sample - all probesets", 
+     xlab = "Normal", ylab = "SLE")
+grid(nx = 6, ny = 6, col = "lightgray")
+
+ctl20 <- c(ctl[1:20]); ctl20
+smp20 <- c(smp[1:20]); smp20
+plot(ctl20, smp20, type = "p", 
+     main = "SLE B cell sample vs. Normal B cell sample - first 20 probesets", 
+     xlab = "Normal", ylab = "SLE",
+     pch = 15, col = "blue")
