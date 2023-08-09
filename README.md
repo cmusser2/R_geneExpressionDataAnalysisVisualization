@@ -1,20 +1,15 @@
 # R_geneExpressionDataAnalysisVisualization
-My code adapted from assignments submitted to the graduate course taken at Johns Hopkins University while pursuing a M.S. in Bioinformatics. 
-
-- XY Scatterplots:
-   - comparing single diseased patient sample to healthy control sample
-   - comparing many probesets
-   - changing the shape and color of points on the scatterplot
-- Gene profile plots:
-   - casting a vector to numberic
-   - visualizing a gene profile
-- Box plot:
-   - visualizing a gene profile across conditions with a singler distribution box per condition.
-   - creating a factor vector indicating disease:normal condition
+# R_missingValueImputation_methods
 
 Learning Goals:
-- Learn basic data manipulation & plotting in R
+- Demonstrate methods used in imputing missing values:
+     -  average value imputation
+     -  weighted K-nearest neighbor (KNN)
+     -  SVD impute method
+
+Pearson's Correlation Matrix - calculated Pearson's distances will be high when genes vary in a similar way in the two experiments, even if the magnitude of change differs greatly
+
 
 Materials/Methods:
-- Data set: "sle_b_cell.txt"
-  - Compares the transcript profiles from peripheral B lymphocytes between patients with Systemic Lupus Erythematosus (SLE) compared to healthy, normal control patients.
+- Data set: "spellman.txt"
+  - The cDNA data set is from Paul Spellman's lab at Stanford, characterizing the yeast Saccharomyces cerevisiae genome.  The data set includes 3 different experiments, each with its own time course (each array is a different time point) for measuring transcript levels that are induced by various cyclins.  The transcripts that respond to this stimulus are seen to be regulated at the different stages of the cell cycle.  The 3 experiments differ by the method that the yeast cultures were synchronized: α factor arrest, elutriation, and arrest of a cdc15 temperature-sensitive mutant. 
